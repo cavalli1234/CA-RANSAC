@@ -1,7 +1,7 @@
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## Consensus Adaptive RANSAC
 
-![teaser](resources/media/teaser.jpg)
+![teaser](resources/media/teaser.png)
 
 RANSAC and its variants are widely used for robust estimation, however, they commonly follow a greedy approach to finding the highest scoring model while ignoring other model hypotheses.
 In contrast, Iteratively Reweighted Least Squares (IRLS) techniques gradually approach the model by iteratively updating the weight of each correspondence based on the residuals from previous iterations.
@@ -15,9 +15,6 @@ Moreover, we demonstrate good generalization properties of our trained model, in
 The proposed attention mechanism and one-step transformer provide an adaptive behavior that enhances the performance of RANSAC, making it a more effective tool for robust estimation.
 
 This repository hosts the source code for Consensus-Adaptive RANSAC for reproducibility and use by the community. We provide pretrained models on the CVPR 2020 RANSAC Tutorial data and on a synthetic correspondence dataset, as well as the training script to train CA-RANSAC on a different dataset with direct pose supervision or just from correspondences, with self-supervision.
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 <!-- GETTING STARTED -->
@@ -45,14 +42,10 @@ To try CA-RANSAC you can proceed as follows:
 
 To train on RootSIFT mutual matches in phototourism, download the CVPR RANSAC Tutorial data [here](http://cmp.felk.cvut.cz/~mishkdmy/CVPR-RANSAC-Tutorial-2020/RANSAC-Tutorial-Data-EF.tar) and run:
    ```
-   python example_train.py --checkpoint_in /path/to/initial/checkpoint.ckpt --checkpoint_out /tmp/caransac_photo --dataset phototourism --data_dir /path/to/extracted/data/RANSAC-Tutorial-Data/
+   python example_train.py --checkpoint_in ../resources/models/caransac_synthetic.ckpt --checkpoint_out /tmp/caransac_photo --dataset phototourism --data_dir /path/to/extracted/data/RANSAC-Tutorial-Data/
    ```
 
 The initial checkpoint is optional, but starting from the synthetic checkpoint will speed up convergence significantly.
 
 
 The script we provide is just an example to re-train the model. However, it shows also how to use it for inference. You can use CA-RANSAC for inference by calling simply the forward method of the CA\_RANSAC class in ``models/arch.py`` with the documented interface. To train CA-RANSAC without ground truth pose, just call the method ``forward_with_losses`` without specifying any ground truth, it will automatically switch to self supervision.
-
-
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
