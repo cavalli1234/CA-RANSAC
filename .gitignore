@@ -19,8 +19,6 @@ tags
 [._]*.un~
 
 # Local stuff
-resources/
-**/local_config.json
 source/lightning_logs/
 
 
